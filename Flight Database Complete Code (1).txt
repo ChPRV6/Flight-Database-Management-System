@@ -1,0 +1,555 @@
+create table passenger(
+passenger_id char(6),
+passenger_name varchar(30),
+mail_id varchar(40) not null,
+contact_no char(10),
+address varchar(40) not null,
+primary key (passenger_id));
+
+insert into passenger values ('C32300','Otto','Otto@gmail.com','7240544509','Dubai');
+insert into passenger values ('C32301','Embry','Embry@gmail.com','6127919885','Tokyo');
+insert into passenger values ('C32302','Jibrael','Jibrael@gmail.com','8847294094','New York');
+insert into passenger values ('C32303','Alson','Alson@gmail.com','6127912819','Hong Kong');
+insert into passenger values ('C32304','Jaxi','Jaxi@gmail.com','6419661689','London');
+insert into passenger values ('C32305','Jaysen','Jaysen@gmail.com','6579620111','Paris');
+insert into passenger values ('C32306','Mateen','Mateen@gmail.com','7979948360','Rome');
+insert into passenger values ('C32307','Torin','Torin@gmail.com','7079248240','Banglore');
+insert into passenger values ('C32308','Zoey','Zoey@gmail.com','8073705083','New York');
+insert into passenger values ('C32309','Iremide','Iremide@gmail.com','8247386928','Paris');
+insert into passenger values ('C32310','Zenna','Zenna@gmail.com','6639069299','Banglore');
+insert into passenger values ('C32311','Crisbel','Crisbel@gmail.com','6954652376','Delhi');
+insert into passenger values ('C32312','Zeenah','Zeenah@gmail.com','6127972750','London');
+insert into passenger values ('C32313','Christiana','Christiana@gmail.com','8003398358','Delhi');
+insert into passenger values ('C32314','Caide','Caide@gmail.com','7979991888','Hong Kong ');
+insert into passenger values ('C32315','Biruk','Biruk@gmail.com','7129135458','Tokyo');
+insert into passenger values ('C32316','Rishab','Rishab@gmail.com','6128428924','Hyderabad');
+insert into passenger values ('C32317','Robyn','Robyn@gmail.com','7979954789','Hyderabad');
+insert into passenger values ('C32318','Aiman','Aiman@gmail.com','6127950203','Hyderabad');
+insert into passenger values ('C32319','Safira','Safira@gmail.com','6725939345','Dubai');
+insert into passenger values ('C32320','Emireth','Emireth@gmail.com','8917637415','Chandigarh');
+insert into passenger values ('C32321','Robel','Robel@gmail.com','8917532625','Paris');
+insert into passenger values ('C32322','Aman','Aman@gmail.com','6128648136','London');
+insert into passenger values ('C32323','Caela','Caela@gmail.com','7355610378','Rome');
+insert into passenger values ('C32324','Adaleigh','Adaleigh@gmail.com','8074080395','New York ');
+insert into passenger values ('C32325','Alyannah','Alyannah@gmail.com','6120743814','Dubai');
+insert into passenger values ('C32326','Yadelyn','Yadelyn@gmail.com','8167782224','Hong Kong ');
+insert into passenger values ('C32327','Averleigh','Averleigh@gmail.com','6127917015','Chandigarh');
+insert into passenger values ('C32328','Karrington','Karrington@gmail.com','7317558840','Tokyo');
+insert into passenger values ('C32329','Keyanna','Keyanna@gmail.com','7447663272','Warangal');
+
+select *
+from passenger;
+
+create table airport(
+airport_id char(6),
+airport_name varchar(30),
+location varchar(30),
+plane_capacity numeric(4,0),
+primary key (airport_id));
+
+insert into airport values ('A25252','Dubai International Airport','United Arab Emirates',200);
+insert into airport values ('A25253','Tokyo International Airport','Japan',124);
+insert into airport values ('A25254','London Heathrow Airport','United Kingdom',176);
+insert into airport values ('A25255','John F. Kennedy  Airport','New York US',167);
+insert into airport values ('A25256','Paris Charles de Gaulle ','France',130);
+insert into airport values ('A25257','Hong kong Airport','Hong Kong',121);
+insert into airport values ('A25258','Kingsford smith Airport','Australia Sydney',100);
+insert into airport values ('A25259','kempegowda Airport','India Bengaluru',180);
+insert into airport values ('A25260','Indira Gandhi Airport','India Delhi',120);
+insert into airport values ('A25261','Rajiv Gandhi Airport','India Hyderabad',80);
+
+select *
+from airport;
+
+create table model(
+model_no char(4),
+manufacturer varchar(20),
+capacity int,
+primary key (model_no));
+
+insert into model values('A380','airbus','853');
+insert into model values('A340','airbus','475');
+insert into model values('A330','airbus','440');
+insert into model values('AT42','ATR','80');
+insert into model values('B777','boeing','550');
+insert into model values('B747','boeing','524');
+insert into model values('B757','boeing','295');
+insert into model values('E170','Embracer','124');
+insert into model values('E190','Embracer','108');
+
+select *
+from model;
+
+create table airplane(
+airplane_id char(6),
+model_no char(4),
+primary key (airplane_id),
+foreign key (model_no) references model(model_no));
+
+insert into airplane values('6AE101','A330');
+insert into airplane values('6AE103','B747');
+insert into airplane values('6AE105','B747');
+insert into airplane values('6AE107','A330');
+insert into airplane values('6AE109','AT42');
+insert into airplane values('6AE102','A380');
+insert into airplane values('6AE104','A340');
+insert into airplane values('6AE108','AT42');
+insert into airplane values('6AE100','B777');
+insert into airplane values('6AE201','B747');
+insert into airplane values('6AE203','B757');
+insert into airplane values('6AE205','E170');
+insert into airplane values('6AE207','B777');
+insert into airplane values('6AE209','A340');
+insert into airplane values('6AE202','E170');
+insert into airplane values('6AE204','E190');
+
+select *
+from airplane;
+
+
+create table flight(
+ flight_id char(6),
+ airplane_id char(6),
+ arrival_time time,
+ departure_time time,
+ to_airport_id char(6),
+ from_airport_id char(6),
+ primary key (flight_id),
+ foreign key(airplane_id) references airplane(airplane_id),
+ foreign key(to_airport_id) references airport(airport_id),
+ foreign key(from_airport_id) references airport(airport_id));
+ 
+ insert into flight values ('6D1021','6AE201','10:00','7:00','A25260','A25259');
+ insert into flight values ('6D1022','6AE201','13:30','11:00','A25261','A25260');
+ insert into flight values ('6D1023','6AE201','16:30','15:00','A25259','A25261');
+ insert into flight values ('6D1024','6AE107','12:00','9:00','A25260','A25259');
+ insert into flight values ('6D1025','6AE107','15:30','13:00','A25261','A25260');
+ insert into flight values ('6D1026','6AE107','18:30','17:00','A25259','A25261');
+ insert into flight values ('6D1027','6AE104','9:30','7:00','A25260','A25261');
+ insert into flight values ('6D1028','6AE104','14:00','11:00','A25259','A25260');
+ insert into flight values ('6D1029','6AE104','16:30','15:00','A25261','A25259');
+ insert into flight values ('8I1101','6AE101','9:20','2:00','A25256','A25252');
+ insert into flight values ('8I1102','6AE101','12:10','11:00','A25254','A25256');
+ insert into flight values ('8I1103','6AE101','21:40','14:00','A25252','A25254');
+ insert into flight values ('8I1104','6AE103','13:40','6:00','A25255','A25254');
+ insert into flight values ('8I1105','6AE103','4:40','21:00','A25254','A25255');
+ insert into flight values ('8I1106','6AE105','15:15','10:00','A25257','A25253');
+ insert into flight values ('8I1107','6AE105','22:15','17:00','A25253','A25257');
+ 
+ select *
+ from flight;
+ 
+ create table fare(
+toairport char(6),
+fromairport char(6),
+fare numeric(8,2),
+primary key(toairport,fromairport));
+
+insert into fare values ('A25252','A25253',15231.62);
+insert into fare values ('A25252','A25254',12043.28);
+insert into fare values ('A25252','A25255',16758.37);
+insert into fare values ('A25252','A25256',11000.00);
+insert into fare values ('A25252','A25257',18241.18);
+insert into fare values ('A25252','A25258',24398.71);
+insert into fare values ('A25253','A25252',15231.62);
+insert into fare values ('A25253','A25254',13214.69);
+insert into fare values ('A25253','A25255',19864.12);
+insert into fare values ('A25253','A25257',10000.00);
+insert into fare values ('A25253','A25260',14972.65);
+insert into fare values ('A25254','A25252',12043.28);
+insert into fare values ('A25254','A25253',13214.60);
+insert into fare values ('A25254','A25255',5247.38);
+insert into fare values ('A25254','A25256',11247.38);
+insert into fare values ('A25254','A25257',12673.33);
+insert into fare values ('A25254','A25258',22642.94);
+insert into fare values ('A25254','A25260',14571.11);
+insert into fare values ('A25255','A25252',16758.37);
+insert into fare values ('A25255','A25253',19864.12);
+insert into fare values ('A25255','A25254',5247.38);
+insert into fare values ('A25255','A25256',6789.12);
+insert into fare values ('A25255','A25257',16420.52);
+insert into fare values ('A25259','A25260',5000.00);
+insert into fare values ('A25260','A25259',5000.00);
+insert into fare values ('A25259','A25261',3000.00);
+insert into fare values ('A25261','A25259',3000.00);
+insert into fare values ('A25260','A25261',5550.46);
+insert into fare values ('A25261','A25260',5550.46);
+
+insert into fare values ('A25256','A25252',11000.00);
+insert into fare values ('A25257','A25253',10000.00);
+
+
+select *
+from fare;
+ 
+ create table ticket(
+ticket_id char(8),
+passenger_id char(6),
+fromairport char(6),
+toairport char(6),
+invoice_no char(12),
+flight_id char(6),
+primary key(ticket_id),
+foreign key (passenger_id) references passenger(passenger_id),
+foreign key (flight_id) references flight(flight_id),
+foreign key (toairport,fromairport) references fare(toairport,fromairport));
+
+insert into ticket values ('T7456800','C32300','A25252','A25256','749333549563','8I1101');
+insert into ticket values ('T7456801','C32301','A25253','A25257','165550052650','8I1106');
+insert into ticket values ('T7456802','C32302','A25255','A25254','341323584686','8I1105');
+insert into ticket values ('T7456803','C32303','A25257','A25253','888893463293','8I1107');
+insert into ticket values ('T7456804','C32304','A25254','A25255','590526751035','8I1104');
+insert into ticket values ('T7456805','C32305','A25256','A25254','177619551973','8I1102');
+insert into ticket values ('T7456806','C32306','A25256','A25254','716672260628','8I1102');
+insert into ticket values ('T7456807','C32307','A25259','A25261','122954973928','6D1029');
+insert into ticket values ('T7456808','C32308','A25255','A25254','199104230643','8I1105');
+insert into ticket values ('T7456809','C32309','A25256','A25254','965198864977','8I1102');
+insert into ticket values ('T7456810','C32310','A25259','A25260','687603256669','6D1021');
+insert into ticket values ('T7456811','C32311','A25260','A25261','266482002148','6D1022');
+insert into ticket values ('T7456812','C32312','A25254','A25252','545011886795','8I1103');
+insert into ticket values ('T7456813','C32313','A25260','A25259','806383338033','6D1028');
+insert into ticket values ('T7456814','C32314','A25257','A25253','748159838466','8I1107');
+insert into ticket values ('T7456815','C32315','A25253','A25257','726574643740','8I1106');
+insert into ticket values ('T7456816','C32316','A25261','A25260','231153325725','6D1027');
+insert into ticket values ('T7456817','C32317','A25261','A25259','805529554574','6D1023');
+insert into ticket values ('T7456818','C32318','A25261','A25259','944403491873','6D1026');
+insert into ticket values ('T7456819','C32319','A25252','A25256','171850330394','8I1101');
+insert into ticket values ('T7456820','C32320','A25260','A25261','822970706680','6D1022');
+insert into ticket values ('T7456821','C32321','A25254','A25255','009767343731','8I1104');
+insert into ticket values ('T7456822','C32322','A25254','A25252','220861139673','8I1103');
+insert into ticket values ('T7456823','C32323','A25260','A25259','507998712095','6D1028');
+insert into ticket values ('T7456824','C32324','A25259','A25261','071693098023','6D1029');
+insert into ticket values ('T7456825','C32325','A25261','A25259','742175984280','6D1023');
+insert into ticket values ('T7456826','C32326','A25259','A25260','782424062682','6D1024');
+insert into ticket values ('T7456827','C32327','A25260','A25261','346695946900','6D1025');
+insert into ticket values ('T7456828','C32328','A25261','A25260','634999143568','6D1027');
+insert into ticket values ('T7456829','C32329','A25261','A25259','754288593365','6D1026');
+ 
+ select *
+ from ticket;
+ 
+ create table b_pass(
+bpass_id char(8),
+baggage_inkg numeric(4,2),
+flight_id char(6),
+meal_type varchar(20),
+primary key (bpass_id),
+foreign key (flight_id) references flight(flight_id));
+
+insert into b_pass values ('F1234500','8.00','8I1101','vegan');
+insert into b_pass values ('F1234501','6.01','8I1106','vegitarian');
+insert into b_pass values ('F1234502','5.02','8I1105','non-vegitarian');
+insert into b_pass values ('F1234503','4.56','8I1107','vegitarian');
+insert into b_pass values ('F1234504','7.45','8I1104','non-vegitarian');
+insert into b_pass values ('F1234505','8.05','8I1102','vegitarian');
+insert into b_pass values ('F1234506','0.8','8I1102','vegitarian');
+insert into b_pass values ('F1234507','12.1','6D1029','non-vegitarian');
+insert into b_pass values ('F1234508','11.2','8I1105','non-vegitarian');
+insert into b_pass values ('F1234509','8.4','8I1102','vegan');
+insert into b_pass values ('F1234510','21.4','6D1021','non-vegitarian');
+insert into b_pass values ('F1234511','14.3','6D1022','vegitarian');
+insert into b_pass values ('F1234512','16.2','8I1103','vegan');
+insert into b_pass values ('F1234513','15.92','6D1028','vegitarian');
+insert into b_pass values ('F1234514','1.48','8I1107','non-vegitarian');
+insert into b_pass values ('F1234515','11.67','8I1106','non-vegitarian');
+insert into b_pass values ('F1234516','16.4','6D1027','non-vegitarian');
+insert into b_pass values ('F1234517','5.58','6D1023','vegan');
+insert into b_pass values ('F1234518','4.65','6D1026','vegan');
+insert into b_pass values ('F1234519','3.15','8I1101','vegitarian');
+insert into b_pass values ('F1234520','23.22','6D1022','non-vegitarian');
+insert into b_pass values ('F1234521','14.23','8I1104','vegitarian');
+insert into b_pass values ('F1234522','6.95','8I1103','vegitarian');
+insert into b_pass values ('F1234523','23.75','6D1028','vegan');
+insert into b_pass values ('F1234524','19.73','6D1029','non-vegitarian');
+insert into b_pass values ('F1234525','7.8','6D1023','non-vegitarian');
+insert into b_pass values ('F1234526','4.6','6D1024','vegitarian');
+insert into b_pass values ('F1234527','24.8','6D1025','vegan');
+insert into b_pass values ('F1234528','31.2','6D1027','vegitarian');
+insert into b_pass values ('F1234529','29.6','6D1026','non-vegitarian');
+
+select *
+from b_pass;
+
+
+create table b_pass2(
+bpass_id char(8),
+ticket_id char(8),
+passenger_id char(6),
+foreign key (bpass_id) references b_pass(bpass_id),
+foreign key (ticket_id) references ticket(ticket_id),
+foreign key (passenger_id) references passenger(passenger_id));
+
+
+insert into b_pass2 values ('F1234500','T7456800','C32300');
+insert into b_pass2 values ('F1234501','T7456801','C32301');
+insert into b_pass2 values ('F1234502','T7456802','C32302');
+insert into b_pass2 values ('F1234503','T7456803','C32303');
+insert into b_pass2 values ('F1234504','T7456804','C32304');
+insert into b_pass2 values ('F1234505','T7456805','C32305');
+insert into b_pass2 values ('F1234506','T7456806','C32306');
+insert into b_pass2 values ('F1234507','T7456807','C32307');
+insert into b_pass2 values ('F1234508','T7456808','C32308');
+insert into b_pass2 values ('F1234509','T7456809','C32309');
+insert into b_pass2 values ('F1234510','T7456810','C32310');
+insert into b_pass2 values ('F1234511','T7456811','C32311');
+insert into b_pass2 values ('F1234512','T7456812','C32312');
+insert into b_pass2 values ('F1234513','T7456813','C32313');
+insert into b_pass2 values ('F1234514','T7456814','C32314');
+insert into b_pass2 values ('F1234515','T7456815','C32315');
+insert into b_pass2 values ('F1234516','T7456816','C32316');
+insert into b_pass2 values ('F1234517','T7456817','C32317');
+insert into b_pass2 values ('F1234518','T7456818','C32318');
+insert into b_pass2 values ('F1234519','T7456819','C32319');
+insert into b_pass2 values ('F1234520','T7456820','C32320');
+insert into b_pass2 values ('F1234521','T7456821','C32321');
+insert into b_pass2 values ('F1234522','T7456822','C32322');
+insert into b_pass2 values ('F1234523','T7456823','C32323');
+insert into b_pass2 values ('F1234524','T7456824','C32324');
+insert into b_pass2 values ('F1234525','T7456825','C32325');
+insert into b_pass2 values ('F1234526','T7456826','C32326');
+insert into b_pass2 values ('F1234527','T7456827','C32327');
+insert into b_pass2 values ('F1234528','T7456828','C32328');
+insert into b_pass2 values ('F1234529','T7456829','C32329');
+
+select *
+from b_pass2 ;
+
+
+create table pilot_salary(
+ designation varchar(20),
+ salary numeric(8,2),
+ primary key (designation));
+
+insert into pilot_salary values ('co_pilot','100000.00');
+ insert into pilot_salary values ('captain','120000.00');
+ 
+ select *
+ from pilot_salary;
+ 
+create table pilot(
+ pilot_id char(6),
+ pilot_name varchar(30),
+ license_id char(8),
+ designation varchar(20),
+ primary key(pilot_id),
+ foreign key(designation) references pilot_salary(designation));
+ 
+  insert into pilot values ('P12141','Philip Thompson','1415X915','captain');
+ insert into pilot values ('P12142','Peter Rivera','71Y4X758','captain');
+ insert into pilot values ('P12143','Brandon Simmons','21553581','captain');
+ insert into pilot values ('P12144','David Coleman','892043Y2','captain');
+ insert into pilot values ('P12145','Walter Patterson','68622891','captain');
+ insert into pilot values ('P12146','Thompson','95268409','captain');
+ insert into pilot values ('P12147','Philip ','4887X281','captain');
+ insert into pilot values ('P12148','Henry Brown','56X74Y3Y','captain');
+ insert into pilot values ('P13141','Carl Allen','Y31Y8533','co_pilot');
+ insert into pilot values ('P13142','Timothy Brooks','890732X0','co_pilot');
+ insert into pilot values ('P13143','Richard Sanchez','9748601X','co_pilot');
+ insert into pilot values ('P13144','Eric Collins','7162252Y','co_pilot');
+ insert into pilot values ('P13145','Jeffrey Adams','8030Y282','co_pilot');
+ insert into pilot values ('P13146','Earl Hughes','97136572','co_pilot');
+ insert into pilot values ('P13147','Matthew Clark','42Y44254','co_pilot');
+ insert into pilot values ('P13148','Roger Green','X2038958','co_pilot');
+ 
+ select *
+ from pilot;
+ 
+ create table pilot_flight(
+ pilot_id char(6),
+ flight_id char(6),
+ foreign key (pilot_id) references pilot(pilot_id),
+ foreign key (flight_id) references flight(flight_id));
+ 
+ insert into pilot_flight values ('P12141','6D1021');
+ insert into pilot_flight values ('P12141','6D1022');
+ insert into pilot_flight values ('P12141','6D1023');
+ insert into pilot_flight values ('P12142','6D1024');
+ insert into pilot_flight values ('P12142','6D1025');
+ insert into pilot_flight values ('P12142','6D1026');
+ insert into pilot_flight values ('P12143','6D1027');
+ insert into pilot_flight values ('P12143','6D1028');
+ insert into pilot_flight values ('P12143','6D1029');
+ insert into pilot_flight values ('P12144','8I1101');
+ insert into pilot_flight values ('P12144','8I1102');
+ insert into pilot_flight values ('P12144','8I1103');
+ insert into pilot_flight values ('P12145','8I1104');
+ insert into pilot_flight values ('P12145','8I1105');
+ insert into pilot_flight values ('P12146','8I1106');
+ insert into pilot_flight values ('P12146','8I1107');
+ 
+ insert into pilot_flight values ('P13141','6D1021');
+ insert into pilot_flight values ('P13141','6D1022');
+ insert into pilot_flight values ('P13141','6D1023');
+ insert into pilot_flight values ('P13142','6D1024');
+ insert into pilot_flight values ('P13142','6D1025');
+ insert into pilot_flight values ('P13142','6D1026');
+ insert into pilot_flight values ('P13143','6D1027');
+ insert into pilot_flight values ('P13143','6D1028');
+ insert into pilot_flight values ('P13143','6D1029');
+ insert into pilot_flight values ('P13144','8I1101');
+ insert into pilot_flight values ('P13144','8I1102');
+ insert into pilot_flight values ('P13144','8I1103');
+ insert into pilot_flight values ('P13145','8I1104');
+ insert into pilot_flight values ('P13145','8I1105');
+ insert into pilot_flight values ('P13146','8I1106');
+ insert into pilot_flight values ('P13146','8I1107');
+ insert into pilot_flight values ('P13147','8I1101');
+ insert into pilot_flight values ('P13147','8I1102');
+ insert into pilot_flight values ('P13147','8I1103');
+ insert into pilot_flight values ('P13148','8I1104');
+ insert into pilot_flight values ('P13148','8I1105');
+ 
+ select *
+ from pilot_flight;
+ 
+ create table crew_salary(
+ designation varchar(20),
+ salary numeric(8,2),
+ primary key(designation));
+ 
+ insert into crew_salary values ('inflight manager','100000.00');
+ insert into crew_salary values ('air hostess','80000.00');
+ insert into crew_salary values ('medic','80000.00');
+ insert into crew_salary values ('trainees','40000.00');
+ 
+ select * 
+ from crew_salary;
+ 
+ create table crew(
+ crew_id char(6),
+ crew_name varchar(30),
+ designation varchar(20),
+ primary key(crew_id),
+ foreign key (designation) references crew_salary(designation));
+ 
+ insert into crew values ('B12300','Bruce Wayne','inflight manager');
+insert into crew values ('B12301','Barry Allen','inflight manager');
+insert into crew values ('B12302','Clark Kent','inflight manager');
+insert into crew values ('B12303','Harry Potter','inflight manager');
+insert into crew values ('B12304','Wally West','inflight manager');
+insert into crew values ('B12305','Conner kent','inflight manager');
+
+insert into crew values ('B12306','Caitlin Snow','medic');
+insert into crew values ('B12307','Cisco Ramon','medic');
+insert into crew values ('B12308','Iris West','medic');
+
+insert into crew values ('B12309','Julian Albert','trainees');
+insert into crew values ('B12310','Alan Rickman','trainees');
+insert into crew values ('B12311','Emma Watson','trainees');
+
+insert into crew values ('B12312','Katrina Kaif','air hostess');
+insert into crew values ('B12313','Priyanka Chopra','air hostess');
+insert into crew values ('B12314','Deepika Padukone','air hostess');
+insert into crew values ('B12315','Aishwarya Rai','air hostess');
+insert into crew values ('B12316','Kareena Kapoor','air hostess');
+insert into crew values ('B12317','Alia Bhatt','air hostess');
+insert into crew values ('B12318','Shraddha Kapoor','air hostess');
+insert into crew values ('B12319','Samantha','air hostess');
+insert into crew values ('B12320','Pooja Hegde','air hostess');
+insert into crew values ('B12321','Rashi Khanna','air hostess');
+insert into crew values ('B12322','Lavanya Tripati','air hostess');
+insert into crew values ('B12323','Ananya','air hostess');
+insert into crew values ('B12324','Anushka','air hostess');
+insert into crew values ('B12325','Kajal','air hostess');
+insert into crew values ('B12326','Tammanah','air hostess');
+insert into crew values ('B12327','Sruti Haasan','air hostess');
+insert into crew values ('B12328','Priyanka Mohan','air hostess');
+insert into crew values ('B12329','Rakul Preet Singh','air hostess');
+
+select *
+from crew;
+ 
+ create table crew_flight(
+ crew_id char(6),
+ flight_id char(6),
+ foreign key (crew_id) references crew(crew_id),
+ foreign key (flight_id) references flight(flight_id));
+ 
+ insert into crew_flight values ('B12300','6D1021');
+ insert into crew_flight values ('B12300','6D1022');
+ insert into crew_flight values ('B12300','6D1023');
+ insert into crew_flight values ('B12309','6D1021');
+ insert into crew_flight values ('B12309','6D1022');
+ insert into crew_flight values ('B12309','6D1023');
+ insert into crew_flight values ('B12312','6D1021');
+ insert into crew_flight values ('B12312','6D1022');
+ insert into crew_flight values ('B12312','6D1023');
+ insert into crew_flight values ('B12313','6D1021');
+ insert into crew_flight values ('B12313','6D1022');
+ insert into crew_flight values ('B12313','6D1023');
+ insert into crew_flight values ('B12314','6D1021');
+ insert into crew_flight values ('B12314','6D1022');
+ insert into crew_flight values ('B12314','6D1023');
+ 
+ insert into crew_flight values ('B12301','6D1024');
+ insert into crew_flight values ('B12301','6D1025');
+ insert into crew_flight values ('B12301','6D1026');
+  insert into crew_flight values ('B12310','6D1024');
+ insert into crew_flight values ('B12310','6D1025');
+ insert into crew_flight values ('B12310','6D1026');
+  insert into crew_flight values ('B12315','6D1024');
+ insert into crew_flight values ('B12315','6D1025');
+ insert into crew_flight values ('B12315','6D1026');
+ insert into crew_flight values ('B12316','6D1024');
+ insert into crew_flight values ('B12316','6D1025');
+ insert into crew_flight values ('B12316','6D1026');
+ insert into crew_flight values ('B12317','6D1024');
+ insert into crew_flight values ('B12317','6D1025');
+ insert into crew_flight values ('B12317','6D1026');
+ 
+ insert into crew_flight values ('B12302','6D1027');
+ insert into crew_flight values ('B12302','6D1028');
+ insert into crew_flight values ('B12302','6D1029');
+ insert into crew_flight values ('B12311','6D1027');
+ insert into crew_flight values ('B12311','6D1028');
+ insert into crew_flight values ('B12311','6D1029');
+ insert into crew_flight values ('B12318','6D1027');
+ insert into crew_flight values ('B12318','6D1028');
+ insert into crew_flight values ('B12318','6D1029');
+ insert into crew_flight values ('B12319','6D1027');
+ insert into crew_flight values ('B12319','6D1028');
+ insert into crew_flight values ('B12319','6D1029');
+ insert into crew_flight values ('B12320','6D1027');
+ insert into crew_flight values ('B12320','6D1028');
+ insert into crew_flight values ('B12320','6D1029');
+ 
+ insert into crew_flight values ('B12303','8I1101');
+ insert into crew_flight values ('B12303','8I1102');
+ insert into crew_flight values ('B12303','8I1103');
+ insert into crew_flight values ('B12306','8I1101');
+ insert into crew_flight values ('B12306','8I1102');
+ insert into crew_flight values ('B12306','8I1103');
+ insert into crew_flight values ('B12321','8I1101');
+ insert into crew_flight values ('B12321','8I1102');
+ insert into crew_flight values ('B12321','8I1103');
+ insert into crew_flight values ('B12322','8I1101');
+ insert into crew_flight values ('B12322','8I1102');
+ insert into crew_flight values ('B12322','8I1103');
+ insert into crew_flight values ('B12323','8I1101');
+ insert into crew_flight values ('B12323','8I1102');
+ insert into crew_flight values ('B12323','8I1103');
+ 
+ insert into crew_flight values ('B12304','8I1104');
+ insert into crew_flight values ('B12304','8I1105');
+ insert into crew_flight values ('B12307','8I1104');
+ insert into crew_flight values ('B12307','8I1105');
+ insert into crew_flight values ('B12324','8I1104');
+ insert into crew_flight values ('B12324','8I1105');
+ insert into crew_flight values ('B12325','8I1104');
+ insert into crew_flight values ('B12325','8I1105');
+ insert into crew_flight values ('B12326','8I1104');
+ insert into crew_flight values ('B12326','8I1105');
+ 
+ insert into crew_flight values ('B12305','8I1106');
+ insert into crew_flight values ('B12305','8I1107');
+ insert into crew_flight values ('B12308','8I1106');
+ insert into crew_flight values ('B12308','8I1107');
+ insert into crew_flight values ('B12327','8I1106');
+ insert into crew_flight values ('B12327','8I1107');
+ insert into crew_flight values ('B12328','8I1106');
+ insert into crew_flight values ('B12328','8I1107');
+ insert into crew_flight values ('B12329','8I1106');
+ insert into crew_flight values ('B12329','8I1107');
+ 
+ select *
+ from crew_flight;

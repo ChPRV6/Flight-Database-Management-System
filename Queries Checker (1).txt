@@ -1,0 +1,16 @@
+/*Query Check1*/
+select passenger.passenger_id,b_pass.meal_type
+from passenger,b_pass,b_pass2
+where passenger.passenger_id=b_pass2.passenger_id and b_pass2.bpass_id=b_pass.bpass_id;
+/*Query Check2*/
+select airplane.airplane_id,flight.flight_id,fare.fare,model.manufacturer
+from flight,fare,airplane,model
+where model.model_no=airplane.model_no and airplane.airplane_id=flight.airplane_id and flight.to_airport_id=fare.toairport and flight.from_airport_id=fare.fromairport;
+/*Query check 3*/
+select b_pass.flight_id,passenger.passenger_name,passenger.address
+from b_pass,ticket,passenger
+where b_pass.flight_id=ticket.flight_id and ticket.passenger_id=passenger.passenger_id;
+/*Query Check 4*/
+select flight.flight_id,pilot.pilot_name,pilot.designation,pilot_salary.salary
+from flight,pilot,pilot_salary,pilot_flight
+where pilot_flight.flight_id=flight.flight_id and pilot_flight.pilot_id=pilot.pilot_id and pilot_salary.designation=pilot.designation ;
