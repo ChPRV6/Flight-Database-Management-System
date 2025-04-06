@@ -82,7 +82,7 @@ npm start
 
 ## 🛠 Technologies Used
 
-- **Frontend**: React.js, Axios, TailwindCSS (or Bootstrap)
+- **Frontend**: React.js, Axios, TailwindCSS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB with Mongoose ODM
 - **Authentication**: JSON Web Tokens (JWT)
