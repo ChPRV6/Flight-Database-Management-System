@@ -44,9 +44,9 @@ cd FlightConnect
 ### 2. Backend Setup
 
 cd server
-`<br>`
+<br>
 npm install
-`<br>`
+<br>
 Create `.env` file in `server/` folder:
 `<br>`
 PORT=5000
