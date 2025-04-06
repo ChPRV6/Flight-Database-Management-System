@@ -38,26 +38,33 @@ This project replicates a flight booking system with features like passenger man
 ### 1. Clone the Repository
 
 git clone https://github.com/yourusername/FlightConnect.git
+`<br>`
 cd FlightConnect
 
 ### 2. Backend Setup
 
 cd server
+`<br>`
 npm install
-
+`<br>`
 Create `.env` file in `server/` folder:
-
+`<br>`
 PORT=5000
+`<br>`
 MONGO_URI=your_mongodb_connection_string
+`<br>`
 JWT_SECRET=your_secret_key
-
+`<br>`
 Run the server:
-
+`<br>`
 npm run dev
-
+`<br>`
 ### 3. Frontend Setup
+`<br>`
 
 cd client
+`<br>`
 npm install
+`<br>`
 npm start
 
