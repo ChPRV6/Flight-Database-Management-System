@@ -100,6 +100,6 @@ npm start
 
 ---
 
-## 📂 License
+## 📂 Author
 
-This project is licensed under the MIT License.
+Developed By CHINTA PHANI RAMA VAIBHAV
