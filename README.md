@@ -13,7 +13,7 @@ flight-booking-mern/
 │   ├── src/                        
 │   │   ├── components/              # Reusable Components
 │   │   ├── pages/                   # Pages like Home, Login, Dashboard
-│   │   ├── services/               <br> # API Calls (Axios)
+│   │   ├── services/                # API Calls (Axios)
 │   │   └── App.js                  
 │   └── package.json                
 ├── server/                          # Express Backend
