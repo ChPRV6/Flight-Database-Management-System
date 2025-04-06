@@ -27,28 +27,6 @@ This project replicates a flight booking system with features like passenger man
 - View Booking History
 - Fare Calculation based on Airports
 
-## Project Structure
-
-flight-booking-mern/
-│
-├── client/                  # React Frontend
-│   ├── src/
-│   │   ├── components/      # Reusable Components
-│   │   ├── pages/           # Pages like Home, Login, Dashboard
-│   │   ├── services/        # API Calls (Axios)
-│   │   └── App.js
-│
-├── server/                  # Express Backend
-│   ├── models/              # Mongoose Schemas
-│   ├── routes/              # API Endpoints
-│   ├── controllers/         # Business Logic
-│   ├── middleware/          # Authentication Middleware
-│   ├── server.js            # Backend Entry Point
-│
-└── .env                     # Environment Variables
-└── package.json             # Project Config
-└── README.md                # Project Documentation
-
 ## How To Run This Project
 
 ### Prerequisites
