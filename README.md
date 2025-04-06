@@ -9,22 +9,22 @@ FlightConnect is a full-stack web application designed to manage flight bookings
 
 ```
 flight-booking-mern/
-├── client/                         <br> # React Frontend
-│   ├── src/                        <br>
-│   │   ├── components/             <br> # Reusable Components
-│   │   ├── pages/                  <br> # Pages like Home, Login, Dashboard
+├── client/                          # React Frontend
+│   ├── src/                        
+│   │   ├── components/              # Reusable Components
+│   │   ├── pages/                   # Pages like Home, Login, Dashboard
 │   │   ├── services/               <br> # API Calls (Axios)
-│   │   └── App.js                  <br>
-│   └── package.json                <br>
-├── server/                         <br> # Express Backend
-│   ├── models/                     <br> # Mongoose Schemas
-│   ├── routes/                     <br> # API Endpoints
-│   ├── controllers/                <br> # Business Logic
-│   ├── middleware/                 <br> # Authentication Middleware
-│   ├── server.js                   <br> # Backend Entry Point
-│   └── .env                        <br> # Environment Variables
-├── README.md                       <br> # Project Documentation
-└── package.json                    <br> # Project Config
+│   │   └── App.js                  
+│   └── package.json                
+├── server/                          # Express Backend
+│   ├── models/                      # Mongoose Schemas
+│   ├── routes/                      # API Endpoints
+│   ├── controllers/                 # Business Logic
+│   ├── middleware/                  # Authentication Middleware
+│   ├── server.js                    # Backend Entry Point
+│   └── .env                         # Environment Variables
+├── README.md                        # Project Documentation
+└── package.json                     # Project Config
 ```
 
 ---
